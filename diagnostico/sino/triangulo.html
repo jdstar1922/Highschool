@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="number" id="prim" value="0">
+    <input type="number" id="sec" value="0">
+    <input type="number" id="tre" value="0">
+    <button type="button" name="button"onclick="calc()">enviar</button>
+    <script type="text/javascript">
+      let num = new Array();
+      let mayor = 0;
+      let sumatoria =0;
+      let mayorPos = 0;
+      const calc = function(){
+        num[0] = document.getElementById('prim').value;
+        num[1] = document.getElementById('sec').value;
+        num[2] = document.getElementById('tre').value;
+        let l1 = num[0];
+        let l2 = num[1];
+        let l3 = num[2];
+        mayor = num[0];
+        for (let i = 0; i < num.length; i++) {
+          if(num[i]>=mayor){
+            mayor = num[i];
+            mayorPos = i;
+            console.log(mayor);
+          }
+        }
+        num.splice(mayorPos);
+        if(mayor < sum(num)){
+          console.log(`si es triangulo`);
+        if(l1 === l2 && l2 === l3){
+          console.log(`es equilatero`);
+          return;
+        }
+        if(l1 === l2 || l2 === l3 || l1 === l3){
+          console.log(`es isosceles`);
+          return;
+        }
+        if(l1 !== l2 && l2 !== l3){
+          console.log(`es escaleno`);
+          return;
+        }
+      }else console.log(`no es triangulo`);
+      }
+      const sum = arr =>{
+        sumatoria = 0;
+        for (let i = 0; i < arr.length; i++) {
+          sumatoria = parseInt(arr[i]) + parseInt(sumatoria);
+          console.log(` ${sumatoria}:${arr[i]}`);
+        }
+        return sumatoria;
+      }
+    </script>
+  </body>
+</html>

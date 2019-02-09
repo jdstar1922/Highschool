@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="num">
+    <button type="button" onclick="clic()">enviar</button>
+    <script type="text/javascript">
+      function clic(){
+        let primo = true;
+        let num = document.getElementById('num').value;
+        for (let i = 2; i < num; i++) {
+            if(num%i == 0){
+                primo = false;
+            }
+        }
+        if(primo){
+          console.log('el numero es primo');
+        }else console.log('el numero no es primo');
+      }
+    </script>
+  </body>
+</html>

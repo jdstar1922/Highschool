@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="number" id="prim" value="0">
+    <input type="number" id="sec" value="0">
+    <input type="number" id="tre" value="0">
+    <button type="button" name="button"onclick="calc()">enviar</button>
+    <script type="text/javascript">
+      let num = new Array();
+      let menor = 0;
+      let negativos = true;
+      const calc = function(){
+        negativos = true;
+        num[0] = document.getElementById('prim').value;
+        num[1] = document.getElementById('sec').value;
+        num[2] = document.getElementById('tre').value;
+        menor = num[0];
+        for (let i = 0; i < num.length; i++) {
+          if(num[i] > 0){
+            negativos = false;
+          }
+        }
+        if(negativos == true){
+          console.log(`los tres son negativos`);
+        }else{
+          for (let i = 0; i < num.length; i++) {
+            if (num[i]>0) {
+              if(num[i] < menor){
+                menor = num[i];
+              }
+            }
+          }
+          console.log(`el menor es ${menor}`);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type=number name="" value="0" id="input">
+    <button type="button" onclick="calc()">enviar</button>
+    <script type="text/javascript">
+      let docenas , descuento , regalo = 0;
+      const calc = () =>{
+        let cant = document.getElementById("input").value;
+        docenas = cant / 12;
+        if (docenas < 3) {
+          descuento = 0.10;
+        }else{
+          descuento = 0.15
+        }
+        if(docenas > 3){
+          regalo = Math.floor(docenas - 3);
+        }
+        let monto = cant * 10000;
+        let neto = monto * descuento;
+        console.log(`la cantidad a pagar es de ${monto}`);
+        console.log(`el descuento es de ${descuento}`);
+        console.log(`El precio neto es de ${neto}`);
+        console.log(`y de regalo obtiene ${regalo}`);
+      }
+    </script>
+  </body>
+</html>

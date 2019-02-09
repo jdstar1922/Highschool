@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="numero">
+    <button type="button" onclick="fibo()">Enviar</button>
+    <script type="text/javascript">
+      const fibo = () =>{
+        let limite = document.getElementById('numero').value;
+        console.log(recurFibo(limite));
+        function recurFibo(n){
+          if(n < 2){
+            return n;
+          }else
+            return recurFibo(n-2) + recurFibo(n-1);
+        }
+      }
+    </script>
+  </body>
+</html>

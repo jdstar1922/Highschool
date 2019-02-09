@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="num">
+    <button type="button" onclick="calc()">enviar</button>
+    <script type="text/javascript">
+      const calc = () => {
+        let num = document.getElementById("num").value;
+        if(num == 0) {console.log(`Es cero`); return;}
+        if(num % 2 == 0){
+          console.log(`el numero es par`)
+        }else{
+          console.log(`el numero es impar`);
+        }
+      };
+    </script>
+  </body>
+</html>

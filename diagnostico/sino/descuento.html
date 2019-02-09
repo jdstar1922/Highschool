@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PRIMEROS PASOS CON BRACKETS</title>
+        <meta name="description" content="Una guía interactiva de primeros pasos para Brackets.">
+    </head>
+    <body>
+        <h6>Cada camisa vale 10 000</h6>
+        <input type="number" id="i1">
+        <button onclick="Comprar()">Comprar</button>
+    </body>
+    <script type="text/javascript">
+        let desc = 0;
+        const Comprar= () => {
+            let cant = parseInt(document.getElementById("i1").value);
+            if(cant >= 1 && cant <= 4){
+                desc = 0.125; 
+            }
+            if(cant >= 5 && cant <= 8){
+                desc = 0.20;
+            }
+            if(cant > 8){
+                desc = 0.315;
+            }
+        let tot = cant * 10000;
+        let dest = tot * desc;
+        let net = tot - dest;
+        console.log(`el total es de ${tot}`);
+        console.log(`el descuento es de ${dest}`);
+        console.log(`el total con descuento es de ${net}`);
+        }
+    </script>
+</html>

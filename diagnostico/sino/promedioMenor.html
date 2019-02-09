@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="number" id="prim" value="0">
+    <input type="number" id="sec" value="0">
+    <input type="number" id="tre" value="0">
+    <input type="number" id="cuar" value="0">
+    <button type="button" name="button"onclick="cobrar()">enviar</button>
+    <script type="text/javascript">
+      let num = new Array();
+      let menor = 0;
+      let sumatoria = 0;
+      let menorPos = 0;
+      const cobrar = function(){
+        num[0] = document.getElementById('prim').value;
+        num[1] = document.getElementById('sec').value;
+        num[2] = document.getElementById('tre').value;
+        num[3] = document.getElementById('cuar').value;
+        menor = num[0];
+        for (let i = 0; i < num.length; i++) {
+          if(num[i]<=menor){
+            menor = num[i];
+            menorPos = i;
+          }
+        }
+        num.splice(menorPos);
+        for (var i = 0; i < num.length; i++) {
+          sumatoria = parseInt(num[i]) + parseInt(sumatoria);
+          console.log(sumatoria);
+        }
+        let promedio = sumatoria / num.length;
+        console.log(`el menor es ${menor}, el promedio es ${promedio}` );
+      }
+    </script>
+  </body>
+</html>

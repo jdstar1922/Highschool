@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="number" id="Juan" value="0">
+    <input type="number" id="Pedro" value="0">
+    <input type="number" id="Maria" value="0">
+    <button type="button" name="button"onclick="calc()">enviar</button>
+    <script type="text/javascript">
+      const calc = function(){
+        let mayor = 0;
+        let segundo = 0;
+        let tercer = 0;
+        let mayorNombre = "";
+        let segundoNombre = "";
+        let tercerNombre = "";
+        juan = document.getElementById('Juan').value;
+        pedro = document.getElementById('Pedro').value;
+        maria = document.getElementById('Maria').value;
+        if(juan === pedro && pedro ===maria){
+          anula();
+          return;
+        }
+        let totalVotos = parseInt(juan) + parseInt(pedro) + parseInt(maria);
+        let mitadVotos = (totalVotos/2)+1;
+        if(juan > pedro && juan > maria){
+          mayor = juan;
+          mayorNombre = "Juan";
+          if(maria>pedro){
+            segundoNombre = "maria";
+            segundo = maria;
+            tercerNombre = "pedro";
+            tercer = pedro;
+          }else if(maria === pedro){
+            let r = rand();
+            if(r == 1){
+              segundoNombre = "maria";
+            }else{
+              segundoNombre = "pedro";
+            }
+          }
+        };
+        if(maria > juan && maria > pedro){
+          mayor = maria;
+          mayorNombre = "Maria";
+          console.log(mayorNombre);
+          if(juan>pedro){
+            segundoNombre = "juan";
+            segundo = juan;
+            tercerNombre = "pedro";
+            tercero = pedro;
+          }else if(juan === pedro){
+            let r = rand();
+            if(r == 1){
+              segundoNombre = "juan";
+            }else{
+              segundoNombre = "pedro";
+            }
+          }
+        };
+        if(pedro > juan && pedro > maria){
+          mayor = pedro
+          mayorNombre = "Pedro";
+          console.log(mayorNombre);
+          if(juan>maria){
+            segundoNombre = "juan";
+            segundo = juan;
+            tercerNombre = "maria";
+            tercer = maria;
+          }else if(juan === maria){
+            let r = rand();
+            if(r == 1){
+              segundoNombre = "juan";
+            }else{
+              segundoNombre = "maria";
+            }
+          }
+        };
+        if(mayor >= mitadVotos){
+          console.log(`el ganador es ${mayorNombre}`);
+          return;
+        }else{
+          alert("No se alcanzo el total  de votos");
+          let prim2da = parseInt(prompt(`Vote por ${mayorNombre}`));
+          let sec2da = parseInt(prompt(`Vote por ${segundoNombre}`))
+          if(prim2da === sec2da){
+            anula();
+            return;
+          }
+          if(prim2da > sec2da){
+            mayor = prim2da;
+          }else{
+            mayor = sec2da;
+            mayorNombre = segundoNombre;
+          }
+        }
+        console.log(`El ganador es ${mayorNombre}`);
+      }
+      const anula = () =>{
+        console.log(`Se anula la eleccion`);
+        return;
+      }
+      const rand = () =>{
+        let r = Math.floor((Math.random()*2)+1);
+        return r;
+      }
+    </script>
+  </body>
+</html>

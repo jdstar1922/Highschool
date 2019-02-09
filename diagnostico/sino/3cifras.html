@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="number" id="num">
+    <button type="button" onclick="js()">enviar</button>
+    <script type="text/javascript">
+      const js = () =>{
+        let negativo = false;
+        let signo = "";
+        let num = document.getElementById('num').value;
+        if(num.toString().length === 3){
+          if(num < 0){
+            num = num*-1;
+            negativo = true;
+          }
+          let cifra1 = num % 10;
+          let cifra2 = Math.floor((num/10)%10);
+          let cifra3 = Math.floor((num/100)%10);
+          let mayor = cifra1;
+          let medio = 0;
+          let menor = 0;
+          if(cifra1 === cifra2 && cifra2 === cifra3){
+            console.log(`el numero mas grande es ${num}`);
+            return;
+          }
+          if(cifra1 > cifra2 && cifra1 > cifra3){
+            mayor = cifra1;
+            if(cifra2 === cifra3){
+              medio = cifra2;
+              menor = cifra3;
+            }else{
+              if(cifra2 > cifra3){
+                medio = cifra2;
+                menor = cifra3;
+              }else{
+                medio = cifra3;
+                menor = cifra2;
+              }
+            }
+          }
+          if(cifra2 > cifra1 && cifra2> cifra3){
+            mayor = cifra2;
+            if(cifra1 === cifra3){
+              medio = cifra1;
+              menor = cifra3;
+            }else{
+              if(cifra1 > cifra3){
+                medio = cifra1;
+                menor = cifra3;
+              }else{
+                medio = cifra3;
+                menor = cifra1;
+              }
+            }
+          }
+          if(cifra3 > cifra1 && cifra3 > cifra2){
+            mayor = cifra3;
+            if(cifra1 === cifra2){
+              medio = cifra1;
+              menor = cifra2;
+            }else{
+              if(cifra1 > cifra2){
+                medio = cifra1;
+                menor = cifra2;
+              }else{
+                medio = cifra2;
+                menor = cifra1;
+              }
+            }
+          }if(negativo){
+            signo = "-";
+          }
+          console.log('El numero mas grande es '+ signo + mayor + medio + menor);
+        }else{
+          console.log(`escriba un numero de tres cifras`);
+        }
+      }
+    </script>
+  </body>
+</html>

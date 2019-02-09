@@ -1,0 +1,29 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="num">
+    <button type="button" onclick="calc()">enviar</button>
+    <script type="text/javascript">
+      let monto = 0;
+      let adicional = 0;
+      const calc = () => {
+        let km = document.getElementById('num').value;
+        let extra = km - 300;
+        if(km <= 300){monto = 30;}
+        if (km > 300 && km <= 1000) {
+          adicional = 0.15;
+        }
+        if (km > 1000) {
+          adicional = 0.10;
+        }
+        let monto = 30 + (extra * adicional);
+        let impuesto = monto * 0.18;
+        console.log(`el monto a pagar es de ${monto}`);
+        console.log(`Con impuesto es de ${monto + impuesto}`)
+      };
+    </script>
+  </body>
+</html>

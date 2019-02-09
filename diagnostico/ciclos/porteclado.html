@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="primero">
+    <input type="text" id="segundo">
+    <button type="button" onclick="ciclo()">Enviar</button>
+    <script type="text/javascript">
+      const ciclo = ()=>{
+        let mayor = 0;
+        let menor = 0;
+        let primero = document.getElementById('primero').value;
+        let segundo = document.getElementById('segundo').value;
+        let cont = 0;
+        let contpar = 0;
+        let sum = 0;
+        if(primero > segundo){
+          mayor = primero;
+          menor = segundo;
+        }else{
+          mayor = segundo;
+          menor = primero;
+        }
+        for (let i = menor; i <= mayor; i++) {
+          console.log(i);
+          cont++;
+          if(i%2 == 0){
+            contpar++;
+          }else{
+            sum = parseInt(sum) + parseInt(i);
+          }
+        }
+        console.log(cont);
+        console.log(contpar);
+        console.log(sum);
+      }
+    </script>
+  </body>
+</html>

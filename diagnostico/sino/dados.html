@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button type="button" onclick="dados()">Tirar</button>
+    <script type="text/javascript">
+      let suerte = "";
+      const dados = () =>{
+        const calculo = ()=>{
+          let d1 = Math.floor(Math.random() * 6)+1;
+          let d2 = Math.floor(Math.random() * 6)+1;
+          let d3 = Math.floor(Math.random() * 6)+1;
+          console.log(`${d1}, ${d2}, ${d3}`);
+          if(d1 === 6 && d2 === 6 && d3 === 6) return "excelente";
+          if((d1 === 6 && d2 === 6) || (d1 === 6 && d3 === 6) || (d2 === 6 && d3 === 6)) return "muy bien";
+          if(d1 === 6 || d2 === 6 || d3 === 6) return "regular";
+          if(d1 != 6 && d2 != 6 && d3 != 6) return "pesimo";
+        }
+          console.log(calculo());
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="limite">
+    <button type="button" onclick="ciclo()">Enviar</button>
+    <script type="text/javascript">
+      const ciclo = ()=>{
+        let limite = document.getElementById('limite').value;
+        let cont = 0;
+        for (var i = 1; i <= limite; i++) {
+          if(i%3 == 0){
+            console.log(i);
+            cont++;
+          }
+        }
+        console.log(cont);
+      }
+    </script>
+  </body>
+</html>

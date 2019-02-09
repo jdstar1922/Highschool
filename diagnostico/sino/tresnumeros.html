@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PRIMEROS PASOS CON BRACKETS</title>
+        <meta name="description" content="Una guía interactiva de primeros pasos para Brackets.">
+    </head>
+    <body>
+        <input type="text" id="i1">
+        <input type="text" id="i2">
+        <input type="text" id="i3">
+        <button onclick="Evaluar()">Evaluar</button>
+    </body>
+    <script type="text/javascript">
+        
+        let menor = 0;
+        let medio = 0;
+        let mayor = 0;
+        function Evaluar(){
+        let n1 = document.getElementById("i1").value;
+        let n2 = document.getElementById("i2").value;
+        let n3 = document.getElementById("i3").value;
+            if(n1 > n2 && n1 > n3){
+                mayor = n1; 
+                if(n2>n3){
+                    medio = n2;
+                    menor = n3;
+                }else{
+                    medio = n3;
+                    menor = n2;
+                }
+            }
+            if(n2 > n1 && n2 > n3){
+                mayor = n2;
+                if(n1>n3){
+                    medio = n1;
+                    menor = n3;
+                }else{
+                    medio = n3;
+                    menor = n1;
+                }
+            }
+            if(n3 > n1 && n3 > n2){
+                mayor = n3;
+                if(n1>n2){
+                    medio = n1;
+                    menor = n2;
+                }else{
+                    medio = n2;
+                    menor = n1;
+                }
+            }
+            alert(`mayor = ${mayor}, medio = ${medio}, menor = ${menor}`);
+        }
+        </script>
+</html>

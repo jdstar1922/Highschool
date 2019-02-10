@@ -12,7 +12,7 @@ class Celda {
     this.flagged = false;
   }
   contains(x,y){
-    return(x > this.x && x<this.x +this.w && y > 0 && y < heihght / this.w);
+    return(x > this.x && x<this.x +this.w && y > this.y && y < this.y + this.w);
   }
   flag(){
     this.flagged = true;

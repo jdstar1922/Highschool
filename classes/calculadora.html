@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="display" id="display"></div>
+      <button class="cero" type="button" onclick="getNums(0)">0</button>
+      <button class="uno" type="button" onclick="getNums(1)">1</button>
+      <button class="dos" type="button" onclick="getNums(2)">2</button>
+      <button class="tres" type="button" onclick="getNums(3)">3</button>
+      <button class="cuatro" type="button" onclick="getNums(4)">4</button>
+      <button class="cinco" type="button" onclick="getNums(5)">5</button>
+      <button class="seis" type="button" onclick="getNums(6)">6</button>
+      <button class="siete" type="button" onclick="getNums(7)">7</button>
+      <button class="ocho" type="button" onclick="getNums(8)">8</button>
+      <button class="nueve" type="button" onclick="getNums(9)">9</button>
+      <button class="punto" type="button" onclick="getNums('.')">.</button>
+      <button class="suma naranja" type="button" onclick="getOp(1)">+</button>
+      <button class="resta naranja" type="button" onclick="getOp(2)">-</button>
+      <button class="multiplicacion naranja" type="button" onclick="getOp(3)">*</button>
+      <button class="division naranja" type="button" onclick="getOp(4)">/</button>
+      <button class="modulus claro" type="button" onclick="porcentar()">%</button>
+      <button class="ac claro" id="ac" type="button" onclick="limpiar()">C</button>
+      <button class="negativo claro" type="button" onclick="negativo()">-/+</button>
+      <button class="calcular naranja" type="button" onclick="calcular()">=</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+    let display = document.getElementById("display");
+    let nums = "";
+    let numAbs;
+    let num1 = 0;
+    let num2 = 0;
+    let op;
+    const getNums = num =>{
+      nums = nums + num;
+      //concadena los numeros
+      display.innerHTML = nums;
+      //escribe en el display
+    }
+    const porcentar = () =>{
+      numAbs = Number(display.innerHTML);
+      //convierte la string del display a int
+      nums = String(numAbs / 100);
+      // lo cambia a porcentaje y lo regresa a string
+      display.innerHTML = nums;
+    }
+    const negativo = () =>{
+      numAbs = Number(display.innerHTML);
+      //convierte la string del display a int
+      nums = String(numAbs * -1);
+      // lo cambia de simbolo y lo regresa a string
+      display.innerHTML = nums;
+      //lo imprime
+    }
+    const getOp = operator =>{
+        num1 = Number(nums);
+        console.log(num1);
+        // carga el primer numero como int
+        limpiar();
+        op = operator;
+        //define el operador
+    }
+    const limpiar=()=>{
+      display.innerHTML = "";
+      nums = "";
+      //pone todo en vacio
+    }
+    const calcular = () =>{
+      num2 = Number(nums);
+      //se define num2 como un int
+      let calc = new Calculadora(num1,num2);
+      //instanciar la clase
+      switch (op) {
+        case 1:
+        //se hace la suma
+          calc.suma()
+            //resuelve la promesa
+            .then((res) =>{
+              display.innerHTML = res;
+              nums = res;
+            })//atrapa el error
+            .catch((err)=>{display.innerHTML = err;});
+        break;
+        case 2:
+          //se hace la resta
+          calc.resta()
+            //resuelve la promesa
+            .then((res) =>{
+            display.innerHTML = res;
+            nums = res;
+          })//atrapa el error
+          .catch((err)=>{display.innerHTML = err;});
+        break;
+        case 3:
+          //se hace la multiplicacion
+          if(num2 == 0){
+            //si el numero es igual a 0 no hace la operacion
+            display.innerHTML = num1;
+          }else calc.multiplica()
+            //resuelve la promesa
+            .then((res) =>{
+            display.innerHTML = res;
+            nums = res;
+          })//atrapa el error
+          .catch((err)=>{display.innerHTML = err;});
+        break;
+        case 4:
+          //se hace la division
+          if(num2 == 0){
+            //si el numero es igual a 0 no hace la operacion
+            display.innerHTML = num1;
+          } else calc.divide()
+            //resuelve la promesa
+            .then((res) =>{
+            display.innerHTML = res;
+            nums = res;
+          })//atrapa el error
+          .catch((err)=>{display.innerHTML = err;});
+        break;
+      }
+    }
+    let that;
+    class Calculadora{
+    //declara la clase
+      constructor(n1,n2){
+        //define el molde para el objeto
+        this.n1 = n1;
+        this.n2 = n2;
+        that = this;
+      }
+      suma(){
+        //suma los parametros y retorna el resultado
+        return new Promise((resolve,reject)=>{
+            try{
+              resolve(that.n1 + that.n2)
+            }catch(err){
+              reject(err.message);
+            }
+        });
+      }
+      resta(){
+        //resta los parametros y retorna el resultado
+        return new Promise((resolve,reject)=>{
+            try{
+              resolve(that.n1 - that.n2)
+            }catch(err){
+              reject(err.message);
+            }
+        });
+      }
+      multiplica(){
+        //multiplica los parametros y retorna el resultado
+        return new Promise((resolve,reject)=>{
+            try{
+              resolve(that.n1 * that.n2)
+            }catch(err){
+              reject(err.message);
+            }
+        });
+      }
+      divide(){
+        //divide los parametros y retorna el resultado
+        return new Promise((resolve,reject)=>{
+            try{
+              resolve(that.n1 / that.n2)
+            }catch(err){
+              reject(err.message);
+            }
+        });
+      }
+    }
+  </script>
+  <style media="screen">
+  *{
+      padding: 0;
+      margin: 0;
+    }
+    button{
+      outline: none;
+      border: 1px solid grey;
+      font-size: 30px;
+      font-weight: 100;
+      width: 100px;
+      height: 92px;
+      background:rgb(75,75,75);
+      color: white;
+    }
+    .claro{
+      background:rgb(200,200,200);
+      color:black;
+    }
+    button:active{
+      background:rgb(200,200,200);
+    }
+    .naranja{
+      background: orange;
+      color: white;
+    }
+    .naranja:active{
+      background:rgb(234,144,0);
+    }
+    .container{
+      display: grid;
+      width: 400px;
+      height: 600px;
+      grid-template-areas:
+       'display display display display'
+       'ac negativo modulus division'
+       'siete ocho nueve multiplicacion'
+       'cuatro cinco seis suma'
+       'uno dos tres resta'
+       'cero cero punto igual';
+       background:black;
+    }
+    .display{
+      grid-area: display;
+      display:grid;
+      align-content: end;
+      width: 100%;
+      height:140px;
+      color: white;
+      background: black;
+      text-align:right;
+      font-size: 80px;
+    }
+    .cero{
+      grid-area:cero;
+      width: 200px;
+    }
+    .uno{
+      grid-area:uno;
+    }
+    .dos{
+      grid-area:dos;
+    }
+    .tres{
+      grid-area:tres;
+    }
+    .cuatro{
+      grid-area:cuatro;
+    }
+    .cinco{
+      grid-area:cinco;
+    }
+    .seis{
+      grid-area:seis;
+    }
+    .siete{
+      grid-area:siete;
+    }
+    .ocho{
+      grid-area:ocho;
+    }
+    .nueve{
+      grid-area:nueve;
+    }
+    .punto{
+      grid-area:punto;
+    }
+    .suma{
+      grid-area:suma;
+    }
+    .resta{
+      grid-area:resta;
+    }
+    .multiplicacion{
+      grid-area:multiplicacion;
+    }
+    .division{
+      grid-area:division;
+    }
+    .modulus{
+      grid-area:modulus;
+    }
+    .negativo{
+      grid-area: negativo;
+    }
+    .ac{
+      grid-area:ac;
+    }
+  </style>
+</html>

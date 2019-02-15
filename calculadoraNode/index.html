@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <div class="container">
+          <div class="display" id="display"></div>
+          <button class="cero" type="button" onclick="getNums(0)">0</button>
+          <button class="uno" type="button" onclick="getNums(1)">1</button>
+          <button class="dos" type="button" onclick="getNums(2)">2</button>
+          <button class="tres" type="button" onclick="getNums(3)">3</button>
+          <button class="cuatro" type="button" onclick="getNums(4)">4</button>
+          <button class="cinco" type="button" onclick="getNums(5)">5</button>
+          <button class="seis" type="button" onclick="getNums(6)">6</button>
+          <button class="siete" type="button" onclick="getNums(7)">7</button>
+          <button class="ocho" type="button" onclick="getNums(8)">8</button>
+          <button class="nueve" type="button" onclick="getNums(9)">9</button>
+          <button class="punto" type="button" onclick="getNums('.')">.</button>
+          <button class="suma naranja" type="button" onclick="getOp(1)">+</button>
+          <button class="resta naranja" type="button" onclick="getOp(2)">-</button>
+          <button class="multiplicacion naranja" type="button" onclick="getOp(3)">*</button>
+          <button class="division naranja" type="button" onclick="getOp(4)">/</button>
+          <button class="modulus claro" type="button" onclick="porcentar()">%</button>
+          <button class="ac claro" id="ac" type="button" onclick="limpiar()">C</button>
+          <button class="negativo claro" type="button" onclick="negativo()">-/+</button>
+          <button class="calcular naranja" type="button" onclick="calcular()">=</button>
+    </div>
+    <style media="screen">
+      *{
+          padding: 0;
+          margin: 0;
+        }
+        button{
+          outline: none;
+          border: 1px solid grey;
+          font-size: 30px;
+          font-weight: 100;
+          width: 100px;
+          height: 92px;
+          background:rgb(75,75,75);
+          color: white;
+        }
+        .claro{
+          background:rgb(200,200,200);
+          color:black;
+        }
+        button:active{
+          background:rgb(200,200,200);
+        }
+        .naranja{
+          background: orange;
+          color: white;
+        }
+        .naranja:active{
+          background:rgb(234,144,0);
+        }
+        .container{
+          display: grid;
+          width: 400px;
+          height: 600px;
+          grid-template-areas:
+           'display display display display'
+           'ac negativo modulus division'
+           'siete ocho nueve multiplicacion'
+           'cuatro cinco seis suma'
+           'uno dos tres resta'
+           'cero cero punto igual';
+           background:black;
+        }
+        .display{
+          grid-area: display;
+          display:grid;
+          align-content: end;
+          width: 100%;
+          height:140px;
+          color: white;
+          background: black;
+          text-align:right;
+          font-size: 80px;
+        }
+        .cero{
+          grid-area:cero;
+          width: 200px;
+        }
+        .uno{
+          grid-area:uno;
+        }
+        .dos{
+          grid-area:dos;
+        }
+        .tres{
+          grid-area:tres;
+        }
+        .cuatro{
+          grid-area:cuatro;
+        }
+        .cinco{
+          grid-area:cinco;
+        }
+        .seis{
+          grid-area:seis;
+        }
+        .siete{
+          grid-area:siete;
+        }
+        .ocho{
+          grid-area:ocho;
+        }
+        .nueve{
+          grid-area:nueve;
+        }
+        .punto{
+          grid-area:punto;
+        }
+        .suma{
+          grid-area:suma;
+        }
+        .resta{
+          grid-area:resta;
+        }
+        .multiplicacion{
+          grid-area:multiplicacion;
+        }
+        .division{
+          grid-area:division;
+        }
+        .modulus{
+          grid-area:modulus;
+        }
+        .negativo{
+          grid-area: negativo;
+        }
+        .ac{
+          grid-area:ac;
+        }
+      </style>
+    </body>
+</html>

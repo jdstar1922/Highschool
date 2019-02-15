@@ -35,11 +35,30 @@
     let num1 = 0;
     let num2 = 0;
     let op;
+    let punto = false;
     const getNums = num =>{
-      nums = nums + num;
-      //concadena los numeros
-      display.innerHTML = nums;
-      //escribe en el display
+      punto = false;
+      if(nums.length < 10){
+        for (var i = 0; i < nums.length; i++) {
+          if(nums[i] == "."){
+            punto = true;
+            console.log("tiene punto");
+          }
+        }
+        if(num == '.'){
+          if(!punto){
+            nums = nums + num;
+            //concadena los numeros
+            display.innerHTML = nums;
+            //escribe en el display
+          }
+        }else{
+          nums = nums + num;
+          //concadena los numeros
+          display.innerHTML = nums;
+          //escribe en el display
+        }
+      }
     }
     const porcentar = () =>{
       numAbs = Number(display.innerHTML);

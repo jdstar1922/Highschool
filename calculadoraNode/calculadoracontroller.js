@@ -24,28 +24,29 @@ class Operacion{
     }
 exports.Sumar = (req, res) => {
     //exporta la clase
-    let instancia = new Operacion(req.n1,req.n2);
+    console.log(req);
+    let instancia = new Operacion(req.body.n1,req.body.n2);
     //instancia la clase
     res.json(instancia.suma());
     //responde con el resultado
 }
-exports.Restar = (req, res) => { 
+exports.Restar = (req, res) => {
     //exporta la clase
-    let instancia = new Operacion(req.n1,req.n2);
+    let instancia = new Operacion(req.body.n1,req.body.n2);
     //instancia la clase
     res.json(instancia.resta());
     //responde con el resultado
 }
 exports.Multiplicar = (req, res) => {
     //exporta la clase
-    let instancia = new Operacion(req.n1,req.n2);
+    let instancia = new Operacion(req.body.n1,req.body.n2);
     //instancia la clase
     res.json(instancia.multiplicacion());
     //responde con el resultado
 }
 exports.Dividir = (req, res) => {
     //exporta la clase
-    let instancia = new Operacion(req.n1,req.n2);
+    let instancia = new Operacion(req.body.n1,req.body.n2);
     //instancia la clase
     res.json(instancia.division());
     //responde con el resultado

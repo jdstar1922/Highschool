@@ -27,6 +27,121 @@
           <button class="negativo claro" type="button" onclick="negativo()">-/+</button>
           <button class="calcular naranja" type="button" onclick="calcular()">=</button>
     </div>
+    <script src="frontclass/calculadora.js" type="text/javascript"></script>
+    <script>
+    let display = document.getElementById("display");
+    let nums = "";
+    let numAbs;
+    let num1 = 0;
+    let num2 = 0;
+    let op;
+    let punto = false;
+    const getNums = num =>{
+      punto = false;
+      if(nums.length < 10){
+        for (var i = 0; i < nums.length; i++) {
+          if(nums[i] == "."){
+            punto = true;
+            console.log("tiene punto");
+          }
+        }
+        if(num == '.'){
+          if(!punto){
+            nums = nums + num;
+            //concadena los numeros
+            display.innerHTML = nums;
+            //escribe en el display
+          }
+        }else{
+          nums = nums + num;
+          //concadena los numeros
+          display.innerHTML = nums;
+          //escribe en el display
+        }
+      }
+    }
+    const porcentar = () =>{
+      numAbs = Number(display.innerHTML);
+      //convierte la string del display a int
+      nums = String(numAbs / 100);
+      // lo cambia a porcentaje y lo regresa a string
+      display.innerHTML = nums;
+    }
+    const negativo = () =>{
+      numAbs = Number(display.innerHTML);
+      //convierte la string del display a int
+      nums = String(numAbs * -1);
+      // lo cambia de simbolo y lo regresa a string
+      display.innerHTML = nums;
+      //lo imprime
+    }
+    const getOp = operator =>{
+        num1 = Number(nums);
+        // carga el primer numero como int
+        limpiar();
+        op = operator;
+        //define el operador
+    }
+    const limpiar=()=>{
+      display.innerHTML = "";
+      nums = "";
+      //pone todo en vacio
+    }
+    const calcular = () =>{
+      num2 = Number(nums);
+      //se define num2 como un int
+      let calc = new Operacion(num1,num2);
+      //instanciar la clase
+      switch (op) {
+        case 1:
+        //se hace la suma
+          calc.suma()
+            //resuelve la promesa
+            .then((res) =>{
+              display.innerHTML = res;
+              nums = res;
+            })//atrapa el error
+            .catch((err)=>{display.innerHTML = err;});
+        break;
+        case 2:
+          //se hace la resta
+          calc.resta()
+            //resuelve la promesa
+            .then((res) =>{
+            display.innerHTML = res;
+            nums = res;
+          })//atrapa el error
+          .catch((err)=>{display.innerHTML = err;});
+        break;
+        case 3:
+          //se hace la multiplicacion
+          if(num2 == 0){
+            //si el numero es igual a 0 no hace la operacion
+            display.innerHTML = num1;
+          }else calc.multiplicacion()
+            //resuelve la promesa
+            .then((res) =>{
+            display.innerHTML = res;
+            nums = res;
+          })//atrapa el error
+          .catch((err)=>{display.innerHTML = err;});
+        break;
+        case 4:
+          //se hace la division
+          if(num2 == 0){
+            //si el numero es igual a 0 no hace la operacion
+            display.innerHTML = num1;
+          } else calc.division()
+            //resuelve la promesa
+            .then((res) =>{
+            display.innerHTML = res;
+            nums = res;
+          })//atrapa el error
+          .catch((err)=>{display.innerHTML = err;});
+        break;
+      }
+    }
+    </script>
     <style media="screen">
       *{
           padding: 0;

@@ -1,10 +1,11 @@
+let that;
 class Operacion{
     //declara la clase
       constructor(n1,n2){
         //define el molde para el objeto
         this.n1 = n1;
         this.n2 = n2;
-        let that = this;
+        that = this;
       }
       suma(){
           return new Promise((resolve,reject)=>{
@@ -18,7 +19,7 @@ class Operacion{
                   xhr.onload = () =>{
                       //cuando carga
                       if(xhr.status === 200){
-                          //si el estado es exitoso resuelve 
+                          //si el estado es exitoso resuelve
                           resolve(JSON.parse(xhr.responseText));
                       }
                       else{
@@ -47,7 +48,7 @@ class Operacion{
                   xhr.onload = () =>{
                       //cuando carga
                       if(xhr.status === 200){
-                          //si el estado es exitoso resuelve 
+                          //si el estado es exitoso resuelve
                           resolve(JSON.parse(xhr.responseText));
                       }
                       else{
@@ -76,7 +77,7 @@ class Operacion{
                   xhr.onload = () =>{
                       //cuando carga
                       if(xhr.status === 200){
-                          //si el estado es exitoso resuelve 
+                          //si el estado es exitoso resuelve
                           resolve(JSON.parse(xhr.responseText));
                       }
                       else{
@@ -105,7 +106,7 @@ class Operacion{
                   xhr.onload = () =>{
                       //cuando carga
                       if(xhr.status === 200){
-                          //si el estado es exitoso resuelve 
+                          //si el estado es exitoso resuelve
                           resolve(JSON.parse(xhr.responseText));
                       }
                       else{

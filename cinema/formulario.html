@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <script src="jquery2.js"></script>
+  </head>
+  <body>
+    <div id="nav"></div>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="derAba">
+      <div class="circle"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+      <div class="circle5"></div>
+      <div class="circle6"></div>
+    </div>
+    <div class="izqArr">
+      <div class="circle"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+      <div class="circle5"></div>
+      <div class="circle6"></div>
+    </div>
+    <div class="container">
+      <div class="nombre">
+        <p>Ingrese el nombre:</p>
+        <input id="Nombre" />
+      </div>
+      <div class="duracionMinutos">
+        <p>Ingrese la duracion en minutos:</p>
+        <input id="duracion" />
+      </div>
+      <div class="genero">
+        <p>Ingrese el genero:</p>
+        <input id="genero" />
+      </div>
+      <div class="idiomaAudio">
+        <p>Ingrese el idioma del audio:</p>
+        <input id="idiomaaudio" />
+      </div>
+      <div class="idiomaSub">
+        <p>Ingrese el idioma de los subtitulos:</p>
+        <input id="idiomasub" />
+      </div>
+      <div class="sinopsis">
+        <p>Ingrese la sipnopsis:</p>
+        <input type="textarea" id="sinopsis" />
+      </div>
+      <div class="clasificacion">
+        <p>Ingrese la clasificacion:</p>
+        <select id="clasificacion">
+          <option value="TP">TP</option>
+          <option value="+12">+12</option>
+          <option value="+18">+18</option>
+        </select>
+      </div>
+      <div class="precio">
+        <p>Ingrese la precio:</p>
+        <input id="precio" />
+      </div>
+      <div class="fecha">
+        <p>Ingrese la fecha:</p>
+        <input type="date" id="fecha" />
+      </div>
+      <div class="horaInicio">
+        <p>Ingrese la hora de inicio</p>
+        <input class="range" type="range" min="1" max="24" id="hora" />
+      </div>
+      <div class="minutoInicio">
+        <p>Ingrese el minuto de inicio</p>
+        <input class="range" type="range" min="1" max="60" id="minuto" />
+      </div>
+      <div class="imagen">
+        <p>Escoja una imagen:</p>
+        <input type="file" id="imgpelicula" class="file" />
+      </div>
+      <div class="estado">
+        <p>Escoja el Estado</p>
+        <select id="estado">
+          <option value="1">Activo</option>
+          <option value="0">Inactivo</option>
+        </select>
+      </div>
+      <button class="btn" onclick="botonguardarclick()">Guardar</button>
+    </div>
+  </body>
+  <script src="clasePelicula.js"></script>
+  <script type="text/javascript">
+    $(document).ready(() => {
+      $("#nav").load("bar.html");
+    });
+    if (!localStorage.getItem("usuariologueado")) {
+      location.href = "login.html";
+    }
+    let imagenenbase64 = "";
+    $("#imgpelicula").change(function() {
+      readURL(this);
+    });
+    //convierte la imagen a base64
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          imagenenbase64 = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    //define todos los asientos
+    var asientos = new Object();
+    var asientoA1 = new Object();
+    asientoA1.NOMBREESTUDIANTE = null;
+    asientoA1.SECCION = null;
+    asientoA1.CARNET = null;
+    asientos.A1 = asientoA1;
+    var asientoA2 = new Object();
+    asientoA2.NOMBREESTUDIANTE = null;
+    asientoA2.SECCION = null;
+    asientoA2.CARNET = null;
+    asientos.A2 = asientoA2;
+    var asientoA3 = new Object();
+    asientoA3.NOMBREESTUDIANTE = null;
+    asientoA3.SECCION = null;
+    asientoA3.CARNET = null;
+    asientos.A3 = asientoA3;
+    var asientoA4 = new Object();
+    asientoA4.NOMBREESTUDIANTE = null;
+    asientoA4.SECCION = null;
+    asientoA4.CARNET = null;
+    asientos.A4 = asientoA4;
+    var asientoA5 = new Object();
+    asientoA5.NOMBREESTUDIANTE = null;
+    asientoA5.SECCION = null;
+    asientoA5.CARNET = null;
+    asientos.A5 = asientoA5;
+    var asientoA6 = new Object();
+    asientoA6.NOMBREESTUDIANTE = null;
+    asientoA6.SECCION = null;
+    asientoA6.CARNET = null;
+    asientos.A6 = asientoA6;
+    var asientoB1 = new Object();
+    asientoB1.NOMBREESTUDIANTE = null;
+    asientoB1.SECCION = null;
+    asientoB1.CARNET = null;
+    asientos.B1 = asientoB1;
+    var asientoB2 = new Object();
+    asientoB2.NOMBREESTUDIANTE = null;
+    asientoB2.SECCION = null;
+    asientoB2.CARNET = null;
+    asientos.B2 = asientoB2;
+    var asientoB3 = new Object();
+    asientoB3.NOMBREESTUDIANTE = null;
+    asientoB3.SECCION = null;
+    asientoB3.CARNET = null;
+    asientos.B3 = asientoB3;
+    var asientoB4 = new Object();
+    asientoB4.NOMBREESTUDIANTE = null;
+    asientoB4.SECCION = null;
+    asientoB4.CARNET = null;
+    asientos.B4 = asientoB4;
+    var asientoB5 = new Object();
+    asientoB5.NOMBREESTUDIANTE = null;
+    asientoB5.SECCION = null;
+    asientoB5.CARNET = null;
+    asientos.B5 = asientoB5;
+    var asientoB6 = new Object();
+    asientoB6.NOMBREESTUDIANTE = null;
+    asientoB6.SECCION = null;
+    asientoB6.CARNET = null;
+    asientos.B6 = asientoB6;
+    var asientoC1 = new Object();
+    asientoC1.NOMBREESTUDIANTE = null;
+    asientoC1.SECCION = null;
+    asientoC1.CARNET = null;
+    asientos.C1 = asientoC1;
+    var asientoC2 = new Object();
+    asientoC2.NOMBREESTUDIANTE = null;
+    asientoC2.SECCION = null;
+    asientoC2.CARNET = null;
+    asientos.C2 = asientoC2;
+    var asientoC3 = new Object();
+    asientoC3.NOMBREESTUDIANTE = null;
+    asientoC3.SECCION = null;
+    asientoC3.CARNET = null;
+    asientos.C3 = asientoC3;
+    var asientoC4 = new Object();
+    asientoC4.NOMBREESTUDIANTE = null;
+    asientoC4.SECCION = null;
+    asientoC4.CARNET = null;
+    asientos.C4 = asientoC4;
+    var asientoC5 = new Object();
+    asientoC5.NOMBREESTUDIANTE = null;
+    asientoC5.SECCION = null;
+    asientoC5.CARNET = null;
+    asientos.C5 = asientoC5;
+    var asientoC6 = new Object();
+    asientoC6.NOMBREESTUDIANTE = null;
+    asientoC6.SECCION = null;
+    asientoC6.CARNET = null;
+    asientos.C6 = asientoC6;
+    var asientoD1 = new Object();
+    asientoD1.NOMBREESTUDIANTE = null;
+    asientoD1.SECCION = null;
+    asientoD1.CARNET = null;
+    asientos.D1 = asientoD1;
+    var asientoD2 = new Object();
+    asientoD2.NOMBREESTUDIANTE = null;
+    asientoD2.SECCION = null;
+    asientoD2.CARNET = null;
+    asientos.D2 = asientoD2;
+    var asientoD3 = new Object();
+    asientoD3.NOMBREESTUDIANTE = null;
+    asientoD3.SECCION = null;
+    asientoD3.CARNET = null;
+    asientos.D3 = asientoD3;
+    var asientoD4 = new Object();
+    asientoD4.NOMBREESTUDIANTE = null;
+    asientoD4.SECCION = null;
+    asientoD4.CARNET = null;
+    asientos.D4 = asientoD4;
+    var asientoD5 = new Object();
+    asientoD5.NOMBREESTUDIANTE = null;
+    asientoD5.SECCION = null;
+    asientoD5.CARNET = null;
+    asientos.D5 = asientoD5;
+    var asientoD6 = new Object();
+    asientoD6.NOMBREESTUDIANTE = null;
+    asientoD6.SECCION = null;
+    asientoD6.CARNET = null;
+    asientos.D6 = asientoD6;
+    var asientoE1 = new Object();
+    asientoE1.NOMBREESTUDIANTE = null;
+    asientoE1.SECCION = null;
+    asientoE1.CARNET = null;
+    asientos.E1 = asientoE1;
+    var asientoE2 = new Object();
+    asientoE2.NOMBREESTUDIANTE = null;
+    asientoE2.SECCION = null;
+    asientoE2.CARNET = null;
+    asientos.E2 = asientoE2;
+    var asientoE3 = new Object();
+    asientoE3.NOMBREESTUDIANTE = null;
+    asientoE3.SECCION = null;
+    asientoE3.CARNET = null;
+    asientos.E3 = asientoE3;
+    var asientoE4 = new Object();
+    asientoE4.NOMBREESTUDIANTE = null;
+    asientoE4.SECCION = null;
+    asientoE4.CARNET = null;
+    asientos.E4 = asientoE4;
+    var asientoF1 = new Object();
+    asientoF1.NOMBREESTUDIANTE = null;
+    asientoF1.SECCION = null;
+    asientoF1.CARNET = null;
+    asientos.F1 = asientoF1;
+    var asientoF2 = new Object();
+    asientoF2.NOMBREESTUDIANTE = null;
+    asientoF2.SECCION = null;
+    asientoF2.CARNET = null;
+    asientos.F2 = asientoF2;
+    var asientoF3 = new Object();
+    asientoF3.NOMBREESTUDIANTE = null;
+    asientoF3.SECCION = null;
+    asientoF3.CARNET = null;
+    asientos.F3 = asientoF3;
+    var asientoF4 = new Object();
+    asientoF4.NOMBREESTUDIANTE = null;
+    asientoF4.SECCION = null;
+    asientoF4.CARNET = null;
+    asientos.F4 = asientoF4;
+    var asientoG1 = new Object();
+    asientoG1.NOMBREESTUDIANTE = null;
+    asientoG1.SECCION = null;
+    asientoG1.CARNET = null;
+    asientos.G1 = asientoG1;
+    var asientoG2 = new Object();
+    asientoG2.NOMBREESTUDIANTE = null;
+    asientoG2.SECCION = null;
+    asientoG2.CARNET = null;
+    asientos.G2 = asientoG2;
+    var asientoG3 = new Object();
+    asientoG3.NOMBREESTUDIANTE = null;
+    asientoG3.SECCION = null;
+    asientoG3.CARNET = null;
+    asientos.G3 = asientoG3;
+    var asientogG4 = new Object();
+    asientogG4.NOMBREESTUDIANTE = null;
+    asientogG4.SECCION = null;
+    asientogG4.CARNET = null;
+    asientos.G4 = asientogG4;
+    var asientoH1 = new Object();
+    asientoH1.NOMBREESTUDIANTE = null;
+    asientoH1.SECCION = null;
+    asientoH1.CARNET = null;
+    asientos.H1 = asientoH1;
+    var asientoH2 = new Object();
+    asientoH2.NOMBREESTUDIANTE = null;
+    asientoH2.SECCION = null;
+    asientoH2.CARNET = null;
+    asientos.H2 = asientoH2;
+    var asientoH3 = new Object();
+    asientoH3.NOMBREESTUDIANTE = null;
+    asientoH3.SECCION = null;
+    asientoH3.CARNET = null;
+    asientos.H3 = asientoH3;
+    var asientoH4 = new Object();
+    asientoH4.NOMBREESTUDIANTE = null;
+    asientoH4.SECCION = null;
+    asientoH4.CARNET = null;
+    asientos.H4 = asientoH4;
+    function botonguardarclick() {
+      //crea la pelicula con todos los parametros
+      var peliculainstanciada = new _Pelicula(
+        0,
+        document.getElementById("Nombre").value,
+        document.getElementById("duracion").value,
+        document.getElementById("genero").value,
+        document.getElementById("idiomaaudio").value,
+        document.getElementById("idiomasub").value,
+        document.getElementById("sinopsis").value,
+        document.getElementById("clasificacion").value,
+        document.getElementById("precio").value,
+        document.getElementById("hora").value,
+        document.getElementById("fecha").value,
+        document.getElementById("minuto").value,
+        asientos,
+        imagenenbase64,
+        document.getElementById("estado").value
+      );
+      peliculainstanciada
+        .Guardar()
+        //llama a guardar
+        .then(() => console.log("Éxito!"))
+        .catch(() => console.log("Mal!"));
+    }
+  </script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: black;
+      overflow-x: hidden;
+    }
+    .container {
+      color: white;
+      width: 410px;
+      display: grid;
+      grid-template-areas:
+        "nombre nombre"
+        "duracionMinutos duracionMinutos"
+        "genero genero"
+        "idiomaAudio idiomaAudio"
+        "idiomaSub idiomaSub"
+        "sinopsis sinopsis"
+        "clasificacion clasificacion"
+        "precio precio"
+        "fecha fecha"
+        "horaInicio minutoInicio"
+        "imagen imagen"
+        "estado estado"
+        "btn btn";
+      justify-items: center;
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+      top: 80px;
+      border-radius: 50px;
+    }
+    .container div {
+      height: 50px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .container div input {
+      box-shadow: 0 0 15px red;
+    }
+    .btn {
+      grid-area: btn;
+    }
+    .nombre {
+      grid-area: nombre;
+      display: grid;
+      justify-items: center;
+    }
+    .duracionMinutos {
+      grid-area: duracionMinutos;
+      display: grid;
+      justify-items: center;
+    }
+    .genero {
+      grid-area: genero;
+      display: grid;
+      justify-items: center;
+    }
+    .idiomaAudio {
+      grid-area: idiomaAudio;
+      display: grid;
+      justify-items: center;
+    }
+    .idiomaSub {
+      grid-area: idiomaSub;
+      display: grid;
+      justify-items: center;
+    }
+    .sinopsis {
+      grid-area: sinopsis;
+      display: grid;
+      justify-items: center;
+    }
+    .clasificacion {
+      grid-area: clasificacion;
+      display: grid;
+      justify-items: center;
+    }
+    .precio {
+      grid-area: precio;
+      display: grid;
+      justify-items: center;
+    }
+    .fecha {
+      grid-area: fecha;
+      display: grid;
+      justify-items: center;
+    }
+    .horaInicio {
+      grid-area: horaInicio;
+      display: grid;
+      justify-items: center;
+      width: 100%;
+    }
+    .minutoInicio {
+      grid-area: minutoInicio;
+      display: grid;
+      justify-items: center;
+      width: 100%;
+    }
+    .imagen {
+      grid-area: imagen;
+      display: grid;
+      justify-items: center;
+    }
+    .file {
+      box-shadow: none !important;
+    }
+
+    .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+    .inputfile + label {
+      font-size: 1.25em;
+      font-weight: 700;
+      color: white;
+      background-color: black;
+      display: inline-block;
+    }
+
+    .inputfile:focus + label,
+    .inputfile + label:hover {
+      background-color: red;
+    }
+    .estado {
+      grid-area: estado;
+      display: grid;
+      justify-items: center;
+    }
+    .range {
+      -webkit-appearance: none;
+      background: lightgray;
+      border-radius: 50px;
+      height: 10px;
+      outline: NONE;
+    }
+    .range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.36);
+      border-radius: 30px;
+      background: rgba(131, 208, 255, 0.75);
+    }
+    .div1 {
+      height: 720px;
+      width: 10px;
+      background: rgba(255, 0, 0, 1);
+      position: absolute;
+      left: 30%;
+      transform: translateY(-50%);
+      top: 70%;
+      box-shadow: 0 0 100px red;
+    }
+    .div1::before,
+    .div1::after {
+      content: "";
+      background: red;
+      position: absolute;
+      left: 0px;
+      height: 30px;
+      width: 10px;
+    }
+    .div1::before {
+      top: -30px;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+    }
+    .div1::after {
+      bottom: -30px;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+    }
+    .div2 {
+      height: 720px;
+      width: 10px;
+      background: rgba(255, 0, 0, 1);
+      position: absolute;
+      right: 30%;
+      transform: translateY(-50%);
+      top: 70%;
+      box-shadow: 0 0 100px red;
+    }
+    .div2::before,
+    .div2::after {
+      content: "";
+      background: red;
+      position: absolute;
+      left: 0px;
+      height: 30px;
+      width: 10px;
+    }
+    .div2::before {
+      top: -30px;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+    }
+    .div2::after {
+      bottom: -30px;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+    }
+    .derAba {
+      position: absolute;
+      top: 100%;
+      left: 100%;
+    }
+    .izqArr {
+      position: absolute;
+      top: 35px;
+      left: 35px;
+    }
+    .circle,
+    .circle2 {
+      background: red;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 350px;
+      width: 350px;
+      border-radius: 50%;
+      box-shadow: 0 0 90px red;
+    }
+    .circle2 {
+      background: black;
+      height: 340px;
+      width: 340px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 90px red;
+    }
+    .circle3,
+    .circle4 {
+      background: blue;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 250px;
+      width: 250px;
+      border-radius: 50%;
+      box-shadow: 0 0 90px blue;
+    }
+    .circle4 {
+      background: black;
+      height: 240px;
+      width: 240px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 90px blue;
+    }
+    .circle5,
+    .circle6 {
+      background: green;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      box-shadow: 0 0 90px green;
+    }
+    .circle6 {
+      background: black;
+      height: 140px;
+      width: 140px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 90px green;
+    }
+  </style>
+</html>

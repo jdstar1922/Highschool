@@ -1,0 +1,60 @@
+<nav id="nav">
+  <div>
+    <span><a href="calendario.html">Calendario</a></span>
+  </div>
+  <a href="formulario.html">
+    <div>
+      <span>Formulario</span>
+    </div>
+  </a>
+  <div>
+    <span><a href="loginAdm.html">Registrarse</a></span>
+  </div>
+  <div id="logueo">
+    <span><a href="login.html">Logeo</a></span>
+  </div>
+  <div id="cerrar">
+    <span><a href="#">Cerrar</a></span>
+  </div>
+</nav>
+<script>
+  if (!localStorage.getItem("usuariologueado")) {
+    document.getElementById("cerrar").style.display = "none";
+    document.getElementById("logueo").style.display = "block";
+  }
+  document.getElementById("cerrar").addEventListener("click", () => {
+    localStorage.removeItem("usuariologueado");
+    location.href = "login.html";
+  });
+</script>
+<style>
+  nav {
+    z-index: 1000;
+    position: fixed;
+    width: 50%;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-areas: "auto auto auto auto";
+    transform: translateX(-50%);
+    left: 50%;
+    background: black;
+  }
+  #logueo {
+    display: none;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    height: 60px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border-bottom: blue 1px solid;
+    transition: 500ms;
+  }
+  a:hover {
+    transform: scale(1.1, 1.1);
+    box-shadow: 0 0 100px rgb(0, 0, 255);
+    background: blue;
+  }
+</style>

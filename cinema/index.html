@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="nav"></div>
+    <div id="titulo">
+      <h1 class="tit">Milos</h1>
+      <h2 class="subtit">The best cinema</h2>
+      <img class="imagen" src="./imagenes/ricardo1.png" alt="" />
+    </div>
+  </body>
+  <div class="derAba">
+    <div class="circle"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+    <div class="circle5"></div>
+    <div class="circle6"></div>
+  </div>
+  <div class="izqArr">
+    <div class="circle"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+    <div class="circle5"></div>
+    <div class="circle6"></div>
+  </div>
+</html>
+<script src="jquery2.js"></script>
+<script type="text/javascript">
+  let cambio = false;
+  $(document).ready(() => {
+    $("#nav").load("bar.html");
+    setInterval(() => {
+      if (!cambio) {
+        $(".imagen").attr("src", "./imagenes/ricardo.jpg");
+        cambio = true;
+      } else {
+        $(".imagen").attr("src", "./imagenes/ricardo1.png");
+        cambio = false;
+      }
+    }, 1000);
+  });
+</script>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    background: black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  #titulo {
+    color: white;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    display: grid;
+    grid-template-areas:
+      "titulo imagen"
+      "sub imagen";
+    justify-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  .tit {
+    grid-area: titulo;
+    font-size: 70px;
+    align-self: flex-end;
+  }
+  .subtit {
+    grid-area: sub;
+    font-size: 45px;
+    align-self: flex-start;
+  }
+  .imagen {
+    grid-area: imagen;
+    height: 100%;
+    width: 580px;
+  }
+
+  .derAba {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+  }
+  .izqArr {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+  }
+  .circle,
+  .circle2 {
+    background: red;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;
+    box-shadow: 0 0 90px red;
+  }
+  .circle2 {
+    background: black;
+    height: 340px;
+    width: 340px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 90px red;
+  }
+  .circle3,
+  .circle4 {
+    background: blue;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    box-shadow: 0 0 90px blue;
+  }
+  .circle4 {
+    background: black;
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 90px blue;
+  }
+  .circle5,
+  .circle6 {
+    background: green;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 90px green;
+  }
+  .circle6 {
+    background: black;
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 90px green;
+  }
+</style>

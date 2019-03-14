@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="nav"></div>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="derAba">
+      <div class="circle"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+      <div class="circle5"></div>
+      <div class="circle6"></div>
+    </div>
+    <div class="izqArr">
+      <div class="circle"></div>
+      <div class="circle2"></div>
+      <div class="circle3"></div>
+      <div class="circle4"></div>
+      <div class="circle5"></div>
+      <div class="circle6"></div>
+    </div>
+    <div class="container">
+      <div class="nombre">
+        <p>Ingrese el email:</p>
+        <input id="email" />
+      </div>
+      <div class="clave">
+        <p>Ingrese la clave:</p>
+        <input id="clave" />
+      </div>
+      <button class="btn" onclick="botonenviarclick()">Enviar</button>
+    </div>
+  </body>
+  <script src="jquery2.js"></script>
+  <script src="claseAdm.js"></script>
+  <script type="text/javascript">
+    $(document).ready(() => {
+      $("#nav").load("bar.html");
+    });
+    function botonenviarclick() {
+      //crea el usuario con todos los parametros
+      var usuarioinstanciada = new _usuario(
+        0,
+        "",
+        document.getElementById("clave").value,
+        document.getElementById("email").value,
+        "",
+        0,
+        0
+      );
+      usuarioinstanciada
+        .Login()
+        //llama a guardar
+        .then(resolve => {
+          console.log(resolve[0]);
+          localStorage.setItem("usuariologueado", JSON.stringify(resolve));
+          location.href = "index.html";
+        })
+        .catch(err => console.log("Mal!"));
+    }
+  </script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: black;
+      overflow-x: hidden;
+    }
+    .container {
+      color: white;
+      width: 410px;
+      display: grid;
+      grid-template-areas:
+        "nombre nombre"
+        "clave clave"
+        "email email"
+        "imagen imagen"
+        "estado estado"
+        "btn btn";
+      justify-items: center;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      border-radius: 50px;
+    }
+    .container div {
+      height: 50px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .container div input {
+      box-shadow: 0 0 15px red;
+    }
+    .btn {
+      grid-area: btn;
+    }
+    .nombre {
+      grid-area: nombre;
+      display: grid;
+      justify-items: center;
+    }
+    .clave {
+      grid-area: clave;
+      display: grid;
+      justify-items: center;
+    }
+    .email {
+      grid-area: email;
+      display: grid;
+      justify-items: center;
+    }
+    .imagen {
+      grid-area: imagen;
+      display: grid;
+      justify-items: center;
+    }
+    .file {
+      box-shadow: none !important;
+    }
+    .estado {
+      grid-area: estado;
+      display: grid;
+      justify-items: center;
+    }
+    .div1 {
+      height: 240px;
+      width: 10px;
+      background: rgba(255, 0, 0, 1);
+      position: absolute;
+      left: 30%;
+      transform: translateY(-50%);
+      top: 50%;
+      box-shadow: 0 0 100px red;
+    }
+    .div1::before,
+    .div1::after {
+      content: "";
+      background: red;
+      position: absolute;
+      left: 0px;
+      height: 30px;
+      width: 10px;
+    }
+    .div1::before {
+      top: -30px;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+    }
+    .div1::after {
+      bottom: -30px;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+    }
+    .div2 {
+      height: 240px;
+      width: 10px;
+      background: rgba(255, 0, 0, 1);
+      position: absolute;
+      right: 30%;
+      transform: translateY(-50%);
+      top: 50%;
+      box-shadow: 0 0 100px red;
+    }
+    .div2::before,
+    .div2::after {
+      content: "";
+      background: red;
+      position: absolute;
+      left: 0px;
+      height: 30px;
+      width: 10px;
+    }
+    .div2::before {
+      top: -30px;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+    }
+    .div2::after {
+      bottom: -30px;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+    }
+    .derAba {
+      position: absolute;
+      top: 100%;
+      left: 100%;
+    }
+    .izqArr {
+      position: absolute;
+      top: 35px;
+      left: 35px;
+    }
+    .circle,
+    .circle2 {
+      background: red;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 350px;
+      width: 350px;
+      border-radius: 50%;
+      box-shadow: 0 0 90px red;
+    }
+    .circle2 {
+      background: black;
+      height: 340px;
+      width: 340px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 90px red;
+    }
+    .circle3,
+    .circle4 {
+      background: blue;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 250px;
+      width: 250px;
+      border-radius: 50%;
+      box-shadow: 0 0 90px blue;
+    }
+    .circle4 {
+      background: black;
+      height: 240px;
+      width: 240px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 90px blue;
+    }
+    .circle5,
+    .circle6 {
+      background: green;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      box-shadow: 0 0 90px green;
+    }
+    .circle6 {
+      background: black;
+      height: 140px;
+      width: 140px;
+      border-radius: 50%;
+      box-shadow: inset 0 0 90px green;
+    }
+  </style>
+</html>

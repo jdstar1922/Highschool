@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Candal|Bree+Serif"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      html,
+      body,
+      h1,
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-gap: 20px;
+        font-family: "Bree Serif", serif;
+        font-size: 28px;
+        background: black;
+        color: white;
+      }
+      header {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: auto auto;
+      }
+      #year {
+        grid-row: 1;
+        grid-column: 2;
+        justify-self: center;
+        font-family: "Candal", sans-serif;
+        font-size: 35px;
+      }
+      #month {
+        grid-row: 2;
+        grid-column: 2;
+        justify-self: center;
+        font-family: "Candal", sans-serif;
+        font-size: 30px;
+      }
+      #prev,
+      #next {
+        grid-row: 1 / span 2;
+        align-self: center;
+      }
+      button {
+        border: 5px solid red;
+        color: red;
+        border-radius: 50px;
+        padding: 15px;
+        margin: 0px 20px;
+        background: black;
+        font-size: 1.5em;
+        outline: none;
+        box-shadow: 0 0 10px 0 #ff1100;
+      }
+      button:active {
+        box-shadow: 0 0 40px 0 red;
+      }
+      nav {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-gap: 10px;
+        justify-items: center;
+      }
+      #abr {
+        display: none;
+      }
+      .dayname {
+        border-bottom: 2px solid red;
+      }
+      main {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-auto-rows: 1fr;
+        grid-gap: 10px;
+      }
+      .red {
+        color: white;
+      }
+      .day {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        align-items: end;
+        justify-items: end;
+        padding: 5px 10px;
+        background: black;
+        border: 2px solid red;
+        box-shadow: 0 0 10px 0 #ff1100;
+      }
+      .red.day {
+        border: 2px solid green;
+        box-shadow: 0 0 10px 0 greenyellow;
+      }
+      .today {
+        color: #5d628f;
+        font-weight: bold;
+      }
+      @media (max-width: 1200px) {
+        body {
+          font-size: 1.2em;
+        }
+        #days {
+          display: none;
+        }
+
+        #abr {
+          display: grid;
+        }
+
+        button {
+          border: 3px solid red;
+          border-radius: 15px;
+          padding: 10px;
+          margin: 0px 10px;
+          font-size: 1.2em;
+        }
+      }
+    </style>
+    <script src="clasePelicula.js"></script>
+    <script>
+      var date = new Date();
+
+      function fillCalendar() {
+        var monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ];
+        var month = document.getElementById("month");
+        month.innerHTML = monthNames[date.getMonth()];
+
+        var year = document.getElementById("year");
+        year.innerHTML = date.getUTCFullYear();
+
+        var lastDay = new Date(
+          date.getUTCFullYear(),
+          date.getMonth() + 1,
+          0
+        ).getDate();
+
+        var main = document.querySelector("main");
+
+        for (var dayNumber = 1; dayNumber <= lastDay; dayNumber++) {
+          var day = document.createElement("div");
+          day.className = "day";
+          day.id = dayNumber;
+          day.innerHTML = dayNumber;
+
+          if (dayNumber == 1)
+            day.style.gridColumn =
+              new Date(date.getUTCFullYear(), date.getMonth(), 1).getDay() + 1;
+          if (
+            new Date(
+              date.getUTCFullYear(),
+              date.getMonth(),
+              dayNumber
+            ).getDay() == 0
+          )
+            day.className += " red";
+
+          var today = new Date();
+          if (
+            dayNumber == today.getDate() &&
+            date.getUTCFullYear() == today.getUTCFullYear() &&
+            date.getMonth() == today.getMonth()
+          )
+            day.className += " today";
+
+          main.appendChild(day);
+        }
+      }
+
+      function removeDays() {
+        var main = document.querySelector("main");
+        main.innerHTML = "";
+      }
+
+      function prev() {
+        removeDays();
+
+        date = new Date(date.getUTCFullYear(), date.getMonth(), 0);
+
+        fillCalendar();
+      }
+
+      function next() {
+        removeDays();
+
+        date = new Date(date.getUTCFullYear(), date.getMonth() + 1, 2);
+
+        fillCalendar();
+      }
+
+      document.ondblclick = function() {
+        // Change alignment of day numbers.
+        var days = document.getElementsByClassName("day");
+        for (var i = 0; i < days.length; i++) {
+          days[i].style.alignItems =
+            days[i].style.alignItems == "end" ? "start" : "end";
+          days[i].style.justifyItems =
+            days[i].style.justifyItems == "end" ? "start" : "end";
+        }
+      };
+      //todo lo de arriba crea el calendario
+      function muestraPelis() {
+        let dias = [];
+        let pelicula = new _Pelicula();
+        //crea una instancia parra usar los metodos
+        pelicula
+          .peliculasPorMesyAño(date.getMonth() + 1, date.getFullYear())
+          //crea una promesa con las peliculas por mes y año
+          .then(result => {
+            //agarra el resultado y para cada elemento
+            //consigue la fecha
+            //llama a agregar imagen
+            for (let element in result) {
+              let fecha = new Date(result[element].FECHA);
+              let dia = fecha.getDate() + 1;
+              agregarimagen(result[element].IMAGEN, dia, result[element]._id);
+            }
+          })
+          .catch(err => console.log(err));
+      }
+      function agregarimagen(imagen, dia, idpelicula) {
+        //a cada dia le añade una imagen
+        document.getElementById(
+          dia
+        ).innerHTML += `<img src='${imagen}' id="${idpelicula}" onclick='cargaTaquilla("${idpelicula}")' height ='30px' width='30px'>`;
+      }
+      function cargaTaquilla(id) {
+        //si se presiona una imagen, la id de su pelicula se guarda en cache y se va a butacas
+        let clasepeliculainstanciada = new _Pelicula(id);
+        clasepeliculainstanciada
+          .Seleccionarporid()
+          .then(response => {
+            localStorage.setItem(
+              "peliculaseleccionada",
+              JSON.stringify(response)
+            );
+            location.href = "butacas.html";
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    </script>
+  </head>
+  <body onload="fillCalendar();">
+    <header>
+      <h1 id="year"></h1>
+      <h2 id="month"></h2>
+      <button id="prev" onclick="prev();">&lt;&lt;&lt;</button>
+      <button id="next" onclick="next();">&gt;&gt;&gt;</button>
+    </header>
+
+    <nav id="days">
+      <div class="dayname red">Sunday</div>
+      <div class="dayname">Monday</div>
+      <div class="dayname">Tuesday</div>
+      <div class="dayname">Wednesday</div>
+      <div class="dayname">Thursday</div>
+      <div class="dayname">Friday</div>
+      <div class="dayname">Saturday</div>
+    </nav>
+
+    <nav id="abr">
+      <div class="dayname red">Sun</div>
+      <div class="dayname">Mon</div>
+      <div class="dayname">Tue</div>
+      <div class="dayname">Wed</div>
+      <div class="dayname">Thu</div>
+      <div class="dayname">Fri</div>
+      <div class="dayname">Sat</div>
+    </nav>
+
+    <main></main>
+    <button onclick="muestraPelis()">Mostrar</button>
+  </body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body onload="butacas();">
+    <main></main>
+    <div id="containerTitulos">
+      <h1 id="TituloPeli"></h1>
+      <h3 id="DescripcionPeli"></h3>
+    </div>
+    <div id="containerPop">
+      <h3 id="tituloAsiento">HOLA</h3>
+      <span id="popNombre">Nombre:</span>
+      <span id="popNI"><input type="text"/></span>
+      <span id="popCarne">Carné:</span>
+      <span id="popCI"><input type="text"/></span>
+      <span id="popSeccion">Sección:</span>
+      <span id="popSI"><input type="text"/></span>
+      <span id="btn"
+        ><button onclick="cargardatosdelabutaca()">Enviar</button
+        ><button onclick="cerrarPop()">Cerrar</button></span
+      >
+    </div>
+  </body>
+</html>
+<script src="clasePelicula.js"></script>
+<script>
+  let idbutaca;
+  function cargardatosdelabutaca() {
+    document.getElementById(idbutaca).style.background = "grey";
+    let pelicula = JSON.parse(localStorage.getItem("peliculaseleccionada"));
+    console.log(pelicula[0]);
+    switch (idbutaca) {
+      case "A1":
+        pelicula[0].ASIENTOS.A1.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A1.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A1.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "A2":
+        pelicula[0].ASIENTOS.A2.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A2.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A2.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "A3":
+        pelicula[0].ASIENTOS.A3.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A3.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A3.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "A4":
+        pelicula[0].ASIENTOS.A4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "A4":
+        pelicula[0].ASIENTOS.A4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "A5":
+        pelicula[0].ASIENTOS.A5.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A5.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A5.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "A6":
+        pelicula[0].ASIENTOS.A6.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A6.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.A6.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "B1":
+        pelicula[0].ASIENTOS.B1.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B1.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B1.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "B2":
+        pelicula[0].ASIENTOS.B2.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B2.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B2.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "B3":
+        pelicula[0].ASIENTOS.B3.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B3.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B3.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "B4":
+        pelicula[0].ASIENTOS.B4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "B5":
+        pelicula[0].ASIENTOS.B5.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B5.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B5.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "B6":
+        pelicula[0].ASIENTOS.B6.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B6.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.B6.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "C1":
+        pelicula[0].ASIENTOS.C1.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C1.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C1.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "C2":
+        pelicula[0].ASIENTOS.C2.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C2.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C2.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "C3":
+        pelicula[0].ASIENTOS.C3.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C3.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C3.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "C4":
+        pelicula[0].ASIENTOS.C4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "C5":
+        pelicula[0].ASIENTOS.C5.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C5.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C5.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "C6":
+        pelicula[0].ASIENTOS.C6.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C6.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.C6.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "D1":
+        pelicula[0].ASIENTOS.D1.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D1.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D1.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "D2":
+        pelicula[0].ASIENTOS.D2.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D2.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D2.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "D3":
+        pelicula[0].ASIENTOS.D3.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D3.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D3.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "D4":
+        pelicula[0].ASIENTOS.D4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "D5":
+        pelicula[0].ASIENTOS.D5.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D5.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.D5.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "E1":
+        pelicula[0].ASIENTOS.E1.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.E1.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.E1.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "E2":
+        pelicula[0].ASIENTOS.E2.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.E2.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.E2.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "E3":
+        pelicula[0].ASIENTOS.E3.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.E3.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.E3.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "E4":
+        pelicula[0].ASIENTOS.E4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.E4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.E4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "F1":
+        pelicula[0].ASIENTOS.F1.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.F1.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.F1.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "F2":
+        pelicula[0].ASIENTOS.F2.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.F2.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.F2.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "F3":
+        pelicula[0].ASIENTOS.F3.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.F3.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.F3.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "F4":
+        pelicula[0].ASIENTOS.F4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.F4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.F4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "G1":
+        pelicula[0].ASIENTOS.G1.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.G1.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.G1.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "G2":
+        pelicula[0].ASIENTOS.G2.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.G2.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.G2.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "G3":
+        pelicula[0].ASIENTOS.G3.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.G3.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.G3.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "G4":
+        pelicula[0].ASIENTOS.G4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.G4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.G4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "H1":
+        pelicula[0].ASIENTOS.H1.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.H1.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.H1.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "H2":
+        pelicula[0].ASIENTOS.H2.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.H2.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.H2.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "H3":
+        pelicula[0].ASIENTOS.H3.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.H3.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.H3.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+      case "H4":
+        pelicula[0].ASIENTOS.H4.NOMBREESTUDIANTE = document.getElementById(
+          "popNI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.H4.CARNET = document.getElementById(
+          "popCI"
+        ).firstElementChild.value;
+        pelicula[0].ASIENTOS.H4.SECCION = document.getElementById(
+          "popSI"
+        ).firstElementChild.value;
+        break;
+    }
+    console.log(pelicula[0].ASIENTOS);
+    let peliculaIns = new _Pelicula(
+      pelicula[0]._id,
+      pelicula[0].NOMBRE,
+      pelicula[0].DURACIONMINUTOS,
+      pelicula[0].GENERO,
+      pelicula[0].IDIOMAAUDIO,
+      pelicula[0].IDIOMASUB,
+      pelicula[0].SINOPSIS,
+      pelicula[0].CLASIFICACION,
+      pelicula[0].PRECIO,
+      pelicula[0].HORAINICIO,
+      pelicula[0].FECHA,
+      pelicula[0].MINUTOINICIO,
+      pelicula[0].ASIENTOS,
+      pelicula[0].IMAGEN,
+      pelicula[0].ESTADO
+    );
+    peliculaIns
+      .Modificar()
+      .then(response => {
+        console.log("Success" + response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  function butacas() {
+    const pelicula = JSON.parse(localStorage.getItem("peliculaseleccionada"));
+    const fecha = new Date(pelicula[0].FECHA);
+    const hora =
+      pelicula[0].HORAINICIO > 12
+        ? pelicula[0].HORAINICIO - 12 + "pm"
+        : pelicula[0].HORAINICIO + "am";
+    document.getElementById("TituloPeli").innerHTML = `<span>
+    <img src='${pelicula[0].IMAGEN}' height ='40px' width='40px'>
+    ${pelicula[0].NOMBRE}
+    </span>`;
+    document.getElementById("DescripcionPeli").innerHTML = `
+    ${fecha.getDate() + 1}/${fecha.getMonth() +
+      1}/${fecha.getFullYear()}:${hora}:${pelicula[0].MINUTOINICIO}`;
+    let main = document.querySelector("main");
+    for (let j = 0; j < 8; j++) {
+      for (let i = 0; i < 6; i++) {
+        //si las butacas son las necesarias, se crea, se les pone una id,
+        if (!((i == 4 || i == 5) && j < 4) && !(i == 4 && j == 4)) {
+          let butaca = document.createElement("div");
+          switch (j) {
+            case 0:
+              butaca.id += "H";
+              break;
+            case 1:
+              butaca.id += "G";
+              break;
+            case 2:
+              butaca.id += "F";
+              break;
+            case 3:
+              butaca.id += "E";
+              break;
+            case 4:
+              butaca.id += "D";
+              break;
+            case 5:
+              butaca.id += "C";
+              break;
+            case 6:
+              butaca.id += "B";
+              break;
+            case 7:
+              butaca.id += "A";
+              break;
+          }
+          butaca.id += i + 1;
+          if (butaca.id == "D6") {
+            butaca.id = "D5";
+          }
+          main.appendChild(butaca);
+          butaca.addEventListener("click", () => {
+            let popUp = document.getElementById("containerPop");
+            popUp.style.opacity = 100;
+            popUp.firstElementChild.innerHTML = butaca.id;
+            idbutaca = butaca.id;
+          });
+          butaca.style.gridColumn = i + 1;
+          butaca.style.gridRow = j + 1;
+          butaca.innerHTML = butaca.id;
+          butaca.className += "butaca";
+          //cambia los atributos de las butacas
+        }
+      }
+    }
+    bloqueabutacas(pelicula);
+  }
+  function bloqueabutacas(peli) {
+    if (peli[0].ASIENTOS.A1.CARNET != null) {
+      document.getElementById("A1").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.A2.CARNET != null) {
+      document.getElementById("A2").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.A3.CARNET != null) {
+      document.getElementById("A3").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.A4.CARNET != null) {
+      document.getElementById("A4").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.A5.CARNET != null) {
+      document.getElementById("A5").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.A6.CARNET != null) {
+      document.getElementById("A6").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.B1.CARNET != null) {
+      document.getElementById("B1").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.B2.CARNET != null) {
+      document.getElementById("B2").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.B3.CARNET != null) {
+      document.getElementById("B3").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.B4.CARNET != null) {
+      document.getElementById("B4").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.B5.CARNET != null) {
+      document.getElementById("B5").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.B6.CARNET != null) {
+      document.getElementById("B6").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.C1.CARNET != null) {
+      document.getElementById("C1").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.C2.CARNET != null) {
+      document.getElementById("C2").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.C3.CARNET != null) {
+      document.getElementById("C3").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.C4.CARNET != null) {
+      document.getElementById("C4").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.C5.CARNET != null) {
+      document.getElementById("C5").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.C6.CARNET != null) {
+      document.getElementById("C6").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.D1.CARNET != null) {
+      document.getElementById("D1").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.D2.CARNET != null) {
+      document.getElementById("D2").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.D3.CARNET != null) {
+      document.getElementById("D3").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.D4.CARNET != null) {
+      document.getElementById("D4").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.D5.CARNET != null) {
+      document.getElementById("D5").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.E1.CARNET != null) {
+      document.getElementById("E1").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.E2.CARNET != null) {
+      document.getElementById("E2").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.E3.CARNET != null) {
+      document.getElementById("E3").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.E4.CARNET != null) {
+      document.getElementById("E4").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.F1.CARNET != null) {
+      document.getElementById("F1").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.F2.CARNET != null) {
+      document.getElementById("F2").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.F3.CARNET != null) {
+      document.getElementById("F3").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.F4.CARNET != null) {
+      document.getElementById("F4").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.G1.CARNET != null) {
+      document.getElementById("G1").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.G2.CARNET != null) {
+      document.getElementById("G2").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.G3.CARNET != null) {
+      document.getElementById("G3").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.G4.CARNET != null) {
+      document.getElementById("G4").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.H1.CARNET != null) {
+      document.getElementById("H1").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.H2.CARNET != null) {
+      document.getElementById("H2").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.H3.CARNET != null) {
+      document.getElementById("H3").style.background = "grey";
+    }
+    if (peli[0].ASIENTOS.H4.CARNET != null) {
+      document.getElementById("H4").style.background = "grey";
+    }
+  }
+  function cerrarPop() {
+    let popUp = document.getElementById("containerPop");
+    popUp.style.opacity = 0;
+  }
+</script>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: black;
+  }
+  #containerTitulos {
+    color: white;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    width: 50%;
+  }
+  #TituloPeli,
+  #DescripcionPeli {
+    display: grid;
+    justify-content: center;
+  }
+  main {
+    display: grid;
+    grid-template-columns: repeat(6, 50px);
+    grid-auto-rows: 1fr;
+    grid-column-gap: 10px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 55%;
+    left: 50%;
+  }
+  .butaca {
+    height: 60px;
+    background: rgb(180, 6, 6);
+    border: 1px solid white;
+    margin-top: -10px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    color: white;
+  }
+  #containerPop {
+    width: 300px;
+    height: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 20%;
+    top: 50%;
+    color: white;
+    background: black;
+    display: grid;
+    grid-template-areas:
+      "tituloPop tituloPop"
+      "popNombre popNI"
+      "popCarne popCI"
+      "popSeccion popSI"
+      "btn btn";
+    border: 1px solid red;
+    border-radius: 50px;
+    opacity: 0;
+    transition: 0.5s;
+  }
+  #containerPop input {
+    background: black;
+    color: white;
+    outline: none;
+    border: none;
+    border-bottom: solid 2px red;
+  }
+  #btn {
+    grid-area: btn;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+  }
+  #btn button {
+    width: 100%;
+    outline: none;
+    color: white;
+    background: none;
+    border: solid 1px red;
+    border-radius: 50px;
+    transition: 0.1s;
+  }
+  #btn button:active {
+    background: red;
+  }
+  #tituloAsiento {
+    grid-area: tituloPop;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+  }
+  #popNombre {
+    grid-area: popNombre;
+    display: grid;
+    align-content: center;
+    justify-content: end;
+  }
+  #popCarne {
+    grid-area: popCarne;
+    display: grid;
+    align-content: center;
+    justify-content: end;
+  }
+  #popSeccion {
+    grid-area: popSeccion;
+    display: grid;
+    align-content: center;
+    justify-content: end;
+  }
+  #popNI {
+    grid-area: popNI;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+  #popCI {
+    grid-area: popCI;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+  #popSI {
+    grid-area: popSI;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

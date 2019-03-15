@@ -28,12 +28,12 @@
   </body>
 </html>
 <script src="clasePelicula.js"></script>
+<script src="jquery2.js"></script>
 <script>
   let idbutaca;
   function cargardatosdelabutaca() {
     document.getElementById(idbutaca).style.background = "grey";
     let pelicula = JSON.parse(localStorage.getItem("peliculaseleccionada"));
-    console.log(pelicula[0]);
     switch (idbutaca) {
       case "A1":
         pelicula[0].ASIENTOS.A1.NOMBREESTUDIANTE = document.getElementById(
@@ -554,12 +554,7 @@
             butaca.id = "D5";
           }
           main.appendChild(butaca);
-          butaca.addEventListener("click", () => {
-            let popUp = document.getElementById("containerPop");
-            popUp.style.opacity = 100;
-            popUp.firstElementChild.innerHTML = butaca.id;
-            idbutaca = butaca.id;
-          });
+          $(`#${butaca.id}`).on("click", () => popUp(butaca));
           butaca.style.gridColumn = i + 1;
           butaca.style.gridRow = j + 1;
           butaca.innerHTML = butaca.id;
@@ -570,123 +565,169 @@
     }
     bloqueabutacas(pelicula);
   }
+  function popUp(butaca) {
+    let popUp = document.getElementById("containerPop");
+    popUp.style.opacity = 100;
+    popUp.firstElementChild.innerHTML = butaca.id;
+    idbutaca = butaca.id;
+  }
   function bloqueabutacas(peli) {
     if (peli[0].ASIENTOS.A1.CARNET != null) {
       document.getElementById("A1").style.background = "grey";
+      $("#A1").off();
     }
     if (peli[0].ASIENTOS.A2.CARNET != null) {
       document.getElementById("A2").style.background = "grey";
+      $("#A2").off();
     }
     if (peli[0].ASIENTOS.A3.CARNET != null) {
       document.getElementById("A3").style.background = "grey";
+      $("#A3").off();
     }
     if (peli[0].ASIENTOS.A4.CARNET != null) {
       document.getElementById("A4").style.background = "grey";
+      $("#A4").off();
     }
     if (peli[0].ASIENTOS.A5.CARNET != null) {
       document.getElementById("A5").style.background = "grey";
+      $("#A5").off();
     }
     if (peli[0].ASIENTOS.A6.CARNET != null) {
       document.getElementById("A6").style.background = "grey";
+      $("#A6").off();
     }
     if (peli[0].ASIENTOS.B1.CARNET != null) {
       document.getElementById("B1").style.background = "grey";
+      $("#B1").off();
     }
     if (peli[0].ASIENTOS.B2.CARNET != null) {
       document.getElementById("B2").style.background = "grey";
+      $("#B2").off();
     }
     if (peli[0].ASIENTOS.B3.CARNET != null) {
       document.getElementById("B3").style.background = "grey";
+      $("#B3").off();
     }
     if (peli[0].ASIENTOS.B4.CARNET != null) {
       document.getElementById("B4").style.background = "grey";
+      $("#B4").off();
     }
     if (peli[0].ASIENTOS.B5.CARNET != null) {
       document.getElementById("B5").style.background = "grey";
+      $("#B5").off();
     }
     if (peli[0].ASIENTOS.B6.CARNET != null) {
       document.getElementById("B6").style.background = "grey";
+      $("#B6").off();
     }
     if (peli[0].ASIENTOS.C1.CARNET != null) {
       document.getElementById("C1").style.background = "grey";
+      $("#C1").off();
     }
     if (peli[0].ASIENTOS.C2.CARNET != null) {
       document.getElementById("C2").style.background = "grey";
+      console.log(document.getElementById("C2"));
+      $("#C2").off();
     }
     if (peli[0].ASIENTOS.C3.CARNET != null) {
       document.getElementById("C3").style.background = "grey";
+      $("#C3").off();
     }
     if (peli[0].ASIENTOS.C4.CARNET != null) {
       document.getElementById("C4").style.background = "grey";
+      $("#C4").off();
     }
     if (peli[0].ASIENTOS.C5.CARNET != null) {
       document.getElementById("C5").style.background = "grey";
+      $("#C5").off();
     }
     if (peli[0].ASIENTOS.C6.CARNET != null) {
       document.getElementById("C6").style.background = "grey";
+      $("#C6").off();
     }
     if (peli[0].ASIENTOS.D1.CARNET != null) {
       document.getElementById("D1").style.background = "grey";
+      $("#D1").off();
     }
     if (peli[0].ASIENTOS.D2.CARNET != null) {
       document.getElementById("D2").style.background = "grey";
+      $("#D2").off();
     }
     if (peli[0].ASIENTOS.D3.CARNET != null) {
       document.getElementById("D3").style.background = "grey";
+      $("#D3").off();
     }
     if (peli[0].ASIENTOS.D4.CARNET != null) {
       document.getElementById("D4").style.background = "grey";
+      $("#D4").off();
     }
     if (peli[0].ASIENTOS.D5.CARNET != null) {
       document.getElementById("D5").style.background = "grey";
+      $("#D5").off();
     }
     if (peli[0].ASIENTOS.E1.CARNET != null) {
       document.getElementById("E1").style.background = "grey";
+      $("#E1").off();
     }
     if (peli[0].ASIENTOS.E2.CARNET != null) {
       document.getElementById("E2").style.background = "grey";
+      $("#E2").off();
     }
     if (peli[0].ASIENTOS.E3.CARNET != null) {
       document.getElementById("E3").style.background = "grey";
+      $("#E3").off();
     }
     if (peli[0].ASIENTOS.E4.CARNET != null) {
       document.getElementById("E4").style.background = "grey";
+      $("#E4").off();
     }
     if (peli[0].ASIENTOS.F1.CARNET != null) {
       document.getElementById("F1").style.background = "grey";
+      $("#F1").off();
     }
     if (peli[0].ASIENTOS.F2.CARNET != null) {
       document.getElementById("F2").style.background = "grey";
+      $("#F2").off();
     }
     if (peli[0].ASIENTOS.F3.CARNET != null) {
       document.getElementById("F3").style.background = "grey";
+      $("#F3").off();
     }
     if (peli[0].ASIENTOS.F4.CARNET != null) {
       document.getElementById("F4").style.background = "grey";
+      $("#F4").off();
     }
     if (peli[0].ASIENTOS.G1.CARNET != null) {
       document.getElementById("G1").style.background = "grey";
+      $("#G1").off();
     }
     if (peli[0].ASIENTOS.G2.CARNET != null) {
       document.getElementById("G2").style.background = "grey";
+      $("#G2").off();
     }
     if (peli[0].ASIENTOS.G3.CARNET != null) {
       document.getElementById("G3").style.background = "grey";
+      $("#G3").off();
     }
     if (peli[0].ASIENTOS.G4.CARNET != null) {
       document.getElementById("G4").style.background = "grey";
+      $("#G4").off();
     }
     if (peli[0].ASIENTOS.H1.CARNET != null) {
       document.getElementById("H1").style.background = "grey";
+      $("#H1").off();
     }
     if (peli[0].ASIENTOS.H2.CARNET != null) {
       document.getElementById("H2").style.background = "grey";
+      $("#H2").off();
     }
     if (peli[0].ASIENTOS.H3.CARNET != null) {
       document.getElementById("H3").style.background = "grey";
+      $("#H3").off();
     }
     if (peli[0].ASIENTOS.H4.CARNET != null) {
       document.getElementById("H4").style.background = "grey";
+      $("#H4").off();
     }
   }
   function cerrarPop() {
